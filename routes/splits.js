@@ -3,8 +3,8 @@ const Split = require('../libs/split');
 
 exports.get = async (ctx) => {
   const splits = await Split.find({});
-  const mappedSplits = splits.map(split => {
-    return Object.assign({}, pick(split, Split.publicFields));
+  ctx.body = splits.map(split => {
+    const id = split._id;
+    return Object.assign({}, pick(split, Split.publicFields), {id});
   });
-  ctx.body = mappedSplits;
 };

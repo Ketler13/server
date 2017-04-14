@@ -20,5 +20,5 @@ const splitSchema = new mongoose.Schema({
 });
 
 splitSchema.statics.publicFields = ['excercises', 'mark', 'date'];
-// User.publicFields
+// Split.publicFields
 module.exports = mongoose.model('Split', splitSchema);

@@ -11,9 +11,6 @@ const handlers = fs.readdirSync(path.join(__dirname, 'handlers')).sort();
 
 handlers.forEach(handler => require('./handlers/' + handler).init(app));
 
-// ---------------------------------------
-
-// can be split into files too
 const Router = require('koa-router');
 const pick = require('lodash/pick');
 
@@ -29,5 +26,5 @@ router
   .post('/addSplit', require('./routes/addSplit').post)
   .patch('/:splitById', require('./routes/splitById').patch)
   .del('/:splitById', require('./routes/splitById').del);
-  
+
 app.use(router.routes());
