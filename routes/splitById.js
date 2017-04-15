@@ -17,12 +17,22 @@ exports.param = async (id, ctx, next) => {
 };
 
 exports.patch = async (ctx) => {
-  Object.assign(ctx.splitById, pick(ctx.request.body, Split.publicFields));
-  await ctx.splitById.save();
-  ctx.body = ctx.splitById.toObject();
+  try {
+    Object.assign(ctx.splitById, {mark: String(ctx.request.body.rate)});
+    await ctx.splitById.save();
+    ctx.body = {success: true};
+  } catch (e) {
+    ctx.throw(409);
+  }
+
 };
 
 exports.del = async (ctx) => {
-  await ctx.splitById.remove();
-  ctx.body = 'ok';
-}
+  try {
+    await ctx.splitById.remove();
+    ctx.body = {success: true};
+  } catch (e) {
+    ctx.body = {success: false};
+    console.log(e);
+  }
+};

@@ -24,7 +24,7 @@ router
   .get('/', require('./routes/root'))
   .get('/splits', require('./routes/splits').get)
   .post('/addSplit', require('./routes/addSplit').post)
-  .patch('/:splitById', require('./routes/splitById').patch)
-  .del('/:splitById', require('./routes/splitById').del);
+  .patch('/splits/:splitById', require('./routes/splitById').patch)
+  .del('/splits/:splitById', require('./routes/splitById').del);
 
 app.use(router.routes());
