@@ -1,5 +1,5 @@
 const pick = require('lodash/pick');
-const Split = require('../libs/split');
+const Split = require('../models/split');
 
 exports.get = async (ctx) => {
   const splits = await Split.find({});

@@ -1,7 +1,6 @@
-const Split = require('../libs/split');
+const Split = require('../models/split');
 
 exports.post = async (ctx) => {
-  console.log(ctx.request.body)
   const split = await Split.create(ctx.request.body)
   if (split) {
     ctx.body = {success: true};

@@ -1,5 +1,5 @@
 const mongoose = require('../libs/mongoose');
-const Split = require('../libs/split');
+const Split = require('../models/split');
 const pick = require('lodash/pick');
 
 exports.param = async (id, ctx, next) => {

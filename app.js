@@ -17,7 +17,7 @@ const pick = require('lodash/pick');
 const router = new Router({
   prefix: '/api'
 });
-const Split = require('./libs/split');
+const Split = require('./models/split');
 
 router
   .param('splitById', require('./routes/splitById').param)
@@ -25,6 +25,7 @@ router
   .get('/splits', require('./routes/splits').get)
   .post('/addSplit', require('./routes/addSplit').post)
   .patch('/splits/:splitById', require('./routes/splitById').patch)
-  .del('/splits/:splitById', require('./routes/splitById').del);
+  .del('/splits/:splitById', require('./routes/splitById').del)
+  .get('/checkExcerciseTitle', require('./routes/checkExcerciseTitle').get);
 
 app.use(router.routes());

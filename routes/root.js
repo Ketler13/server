@@ -1,4 +1,4 @@
-const Split = require('../libs/split');
+const Split = require('../models/split');
 
 module.exports = async (ctx) => {
   ctx.body = 'Hello';
