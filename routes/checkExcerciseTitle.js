@@ -10,10 +10,10 @@ exports.get = async (ctx) => {
       if (!excercise) {
         ctx.body = {success: true};
       } else {
-        ctx.throw(409);
+        ctx.body = {success: false, error: 'Title exists'};
       }
     } catch (error) {
-      ctx.throw(502);
+      ctx.throw(error);
     }
   }
 }
