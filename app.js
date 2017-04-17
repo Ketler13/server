@@ -21,6 +21,7 @@ const Split = require('./models/split');
 
 router
   .param('splitById', require('./routes/splitById').param)
+  .param('excerciseById', require('./routes/excercises').param)
   .get('/', require('./routes/root'))
   .get('/splits', require('./routes/splits').get)
   .post('/addSplit', require('./routes/addSplit').post)
@@ -28,6 +29,7 @@ router
   .del('/splits/:splitById', require('./routes/splitById').del)
   .get('/checkExcerciseTitle', require('./routes/checkExcerciseTitle').get)
   .post('/addExcercise', require('./routes/addExcercise').post)
-  .get('/excercises', require('./routes/excercises').get);
+  .get('/excercises', require('./routes/excercises').get)
+  .del('/excercises/:excerciseById', require('./routes/excercises').del);
 
 app.use(router.routes());
