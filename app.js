@@ -27,6 +27,7 @@ router
   .patch('/splits/:splitById', require('./routes/splitById').patch)
   .del('/splits/:splitById', require('./routes/splitById').del)
   .get('/checkExcerciseTitle', require('./routes/checkExcerciseTitle').get)
-  .post('/addExcercise', require('./routes/addExcercise').post);
+  .post('/addExcercise', require('./routes/addExcercise').post)
+  .get('/excercises', require('./routes/excercises').get);
 
 app.use(router.routes());
