@@ -4,12 +4,12 @@ const mongoose = require('../libs/mongoose');
 const excerciseSchema = new mongoose.Schema({
   title: {
     type: String,
-    unique: true,
-    required: 'You must enter excercise name'
+    unique: 'Excercise already exists',
+    required: 'Enter title'
   },
   text: {
     type: String,
-    required: true
+    required: 'Enter text'
   }
 }, {
   timestamps: true
