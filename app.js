@@ -7,6 +7,8 @@ const mongoose = require('./libs/mongoose');
 const path = require('path');
 const fs = require('fs');
 
+app.keys = [config.secret];
+
 const handlers = fs.readdirSync(path.join(__dirname, 'handlers')).sort();
 
 handlers.forEach(handler => require('./handlers/' + handler).init(app));
@@ -30,6 +32,8 @@ router
   .get('/checkExcerciseTitle', require('./routes/checkExcerciseTitle').get)
   .post('/addExcercise', require('./routes/addExcercise').post)
   .get('/excercises', require('./routes/excercises').get)
-  .del('/excercises/:excerciseById', require('./routes/excercises').del);
+  .del('/excercises/:excerciseById', require('./routes/excercises').del)
+  .post('/register', require('./routes/register').post)
+  .post('/login', require('./routes/login').post);
 
 app.use(router.routes());
