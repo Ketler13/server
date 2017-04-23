@@ -1,24 +1,24 @@
 const User = require('../models/user');
 
 exports.post = async (ctx) => {
-  const {email, displayName, password} = ctx.request.body;
-  if (!email || !displayName || !password) {
+  const {email, name, password} = ctx.request.body;
+  if (!email || !name || !password) {
     ctx.throw(400);
   }
   const emailExists = await User.findOne({email});
-  const displayNameExists = await User.findOne({displayName});
+  const nameExists = await User.findOne({name});
   if (emailExists) {
     ctx.body = {
       success: false,
       message: 'Email exists'
     };
-  } else if (displayNameExists) {
+  } else if (nameExists) {
     ctx.body = {
       success: false,
       message: 'Name exists'
     };
   } else {
-    const user = await User.create({email, displayName, password});
+    const user = await User.create({email, name, password});
     if (user) {
       ctx.body = {
         success: true

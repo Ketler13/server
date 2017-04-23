@@ -3,7 +3,7 @@ const crypto = require('crypto');
 const config = require('config');
 
 const userSchema = new mongoose.Schema({
-  displayName:   {
+  name:   {
     type:     String,
     required: "Имя пользователя отсутствует."
   },
@@ -66,7 +66,7 @@ userSchema.methods.checkPassword = function(password) {
 
 userSchema.methods.getPublicFields = function() {
   return {
-    displayName: this.displayName,
+    name: this.name,
     email: this.email
   }
 };

@@ -2,7 +2,6 @@ const Koa = require('koa');
 const app = module.exports = new Koa();
 
 const config = require('config');
-const mongoose = require('./libs/mongoose');
 
 const path = require('path');
 const fs = require('fs');
@@ -14,12 +13,10 @@ const handlers = fs.readdirSync(path.join(__dirname, 'handlers')).sort();
 handlers.forEach(handler => require('./handlers/' + handler).init(app));
 
 const Router = require('koa-router');
-const pick = require('lodash/pick');
 
 const router = new Router({
   prefix: '/api'
 });
-const Split = require('./models/split');
 
 router
   .param('splitById', require('./routes/splitById').param)
@@ -33,6 +30,8 @@ router
   .post('/addExcercise', require('./routes/addExcercise').post)
   .get('/excercises', require('./routes/excercises').get)
   .del('/excercises/:excerciseById', require('./routes/excercises').del)
+  .post('/checkEmail', require('./routes/checkEmail').post)
+  .post('/checkName', require('./routes/checkName').post)
   .post('/register', require('./routes/register').post)
   .post('/login', require('./routes/login').post);
 
