@@ -1,6 +1,10 @@
 const mongoose = require('../libs/mongoose');
+const passport = require('passport');
 const Excercise = require('../models/excercise');
 const pick = require('lodash/pick');
+const User = require('../models/user');
+const config = require('config');
+const jwt = require('jwt-simple');
 
 exports.param = async (id, ctx, next) => {
   if (!mongoose.Types.ObjectId.isValid(id)) {
@@ -16,7 +20,8 @@ exports.param = async (id, ctx, next) => {
   await next();
 };
 
-exports.get = async (ctx) => {
+exports.get = async (ctx, next) => {
+  await passport.authenticate('jwt', {session: false})(ctx, next);
   const excercises = await Excercise.find({});
   if (excercises && excercises.length) {
     const mappedExcercises = excercises.map(excercise => {

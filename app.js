@@ -33,6 +33,7 @@ router
   .post('/checkEmail', require('./routes/checkEmail').post)
   .post('/checkName', require('./routes/checkName').post)
   .post('/register', require('./routes/register').post)
-  .post('/login', require('./routes/login').post);
+  .post('/logIn', require('./routes/logIn').post)
+  .post('/logOut', require('./routes/logOut').post);
 
 app.use(router.routes());

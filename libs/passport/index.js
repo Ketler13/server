@@ -4,5 +4,6 @@ const User = require('../../models/user');
 require('./serialize');
 
 require('./localStrategy');
+require('./jwtStrategy');
 
 module.exports = passport;
