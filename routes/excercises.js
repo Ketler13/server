@@ -37,7 +37,8 @@ exports.get = async (ctx, next) => {
   }
 }
 
-exports.del = async (ctx) => {
+exports.del = async (ctx, next) => {
+  await passport.authenticate('jwt', {session: false})(ctx, next);
   try {
     await ctx.excerciseById.remove();
     ctx.body = {success: true};

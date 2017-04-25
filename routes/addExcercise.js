@@ -1,6 +1,8 @@
 const Excercise = require('../models/excercise');
+const passport = require('passport');
 
-exports.post = async (ctx) => {
+exports.post = async (ctx, next) => {
+  await passport.authenticate('jwt', {session: false})(ctx, next);
   const { title, text } = ctx.request.body;
   if (!title || !text) {
     ctx.throw(402);

@@ -67,7 +67,8 @@ userSchema.methods.checkPassword = function(password) {
 userSchema.methods.getPublicFields = function() {
   return {
     name: this.name,
-    email: this.email
+    email: this.email,
+    id: this._id
   }
 };
 

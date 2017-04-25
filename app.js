@@ -22,7 +22,7 @@ router
   .param('splitById', require('./routes/splitById').param)
   .param('excerciseById', require('./routes/excercises').param)
   .get('/', require('./routes/root'))
-  .get('/splits', require('./routes/splits').get)
+  .post('/splits', require('./routes/splits').post)
   .post('/addSplit', require('./routes/addSplit').post)
   .patch('/splits/:splitById', require('./routes/splitById').patch)
   .del('/splits/:splitById', require('./routes/splitById').del)

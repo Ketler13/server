@@ -1,4 +1,5 @@
 const mongoose = require('../libs/mongoose');
+const passport = require('passport');
 const Split = require('../models/split');
 const pick = require('lodash/pick');
 
@@ -16,7 +17,8 @@ exports.param = async (id, ctx, next) => {
   await next();
 };
 
-exports.patch = async (ctx) => {
+exports.patch = async (ctx, next) => {
+  await passport.authenticate('jwt', {session: false})(ctx, next);
   try {
     Object.assign(ctx.splitById, {mark: String(ctx.request.body.rate)});
     await ctx.splitById.save();
@@ -27,7 +29,8 @@ exports.patch = async (ctx) => {
 
 };
 
-exports.del = async (ctx) => {
+exports.del = async (ctx, next) => {
+  await passport.authenticate('jwt', {session: false})(ctx, next);
   try {
     await ctx.splitById.remove();
     ctx.body = {success: true};

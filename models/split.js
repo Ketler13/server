@@ -13,7 +13,10 @@ const splitSchema = new mongoose.Schema({
     type: String,
     default: '0'
   },
-  date: String
+  date: String,
+  user: {
+    type: String
+  }
 }, {
   timestamps: true
 });
