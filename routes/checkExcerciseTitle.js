@@ -10,7 +10,7 @@ exports.get = async (ctx) => {
       if (!excercise) {
         ctx.body = {success: true};
       } else {
-        ctx.body = {success: false, error: 'Excercise already exists'};
+        ctx.body = {success: false, error: 'Упражнение с таким названием уже есть'};
       }
     } catch (error) {
       ctx.throw(error);

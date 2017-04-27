@@ -10,7 +10,7 @@ exports.post = async (ctx) => {
       if (!user) {
         ctx.body = {success: true};
       } else {
-        ctx.body = {success: false, error: 'Username exists'};
+        ctx.body = {success: false, error: 'Имя занято'};
       }
     } catch (error) {
       ctx.throw(error);

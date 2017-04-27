@@ -10,7 +10,7 @@ exports.post = async function(ctx, next) {
   if (!user || !user.checkPassword(password)) {
     ctx.body = {
       success: false,
-      error: 'Invaild data'
+      error: 'Неверные данные'
     };
   } else {
     const payload = {

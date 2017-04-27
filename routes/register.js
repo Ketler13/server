@@ -10,12 +10,12 @@ exports.post = async (ctx) => {
   if (emailExists) {
     ctx.body = {
       success: false,
-      message: 'Email exists'
+      message: 'Email занят'
     };
   } else if (nameExists) {
     ctx.body = {
       success: false,
-      message: 'Name exists'
+      message: 'Пользователь с таким именем существует'
     };
   } else {
     const user = await User.create({email, name, password});
@@ -24,7 +24,10 @@ exports.post = async (ctx) => {
         success: true
       };
     } else {
-      ctx.throw(500);
+      ctx.body = {
+        success: false,
+        error: 'Вы ввели некорректные данные'
+      }
     }
   }
 };
