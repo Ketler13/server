@@ -6,6 +6,9 @@ const config = require('config');
 
 exports.post = async function(ctx, next) {
   const {email, password} = ctx.request.body;
+  if (!email || !password) {
+    ctx.throw(400);
+  }
   const user = await User.findOne({ email });
   if (!user || !user.checkPassword(password)) {
     ctx.body = {

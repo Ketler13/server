@@ -10,7 +10,7 @@
     "test": "test"
   },
   "scripts": {
-    "start": "set NODE_ENV=production && supervisor index.js",
+    "start": "set NODE_ENV='production' && supervisor index.js",
     "test": "mocha --harmony"
   },
   "author": "ketler",
