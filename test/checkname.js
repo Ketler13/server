@@ -15,12 +15,12 @@ const newUser = {
     password: '123456'
 };
 
-describe('POST /checkEmail', async () => {
-  context('when email is empty', async () => {
+describe('POST /checkName', async () => {
+  context('when name is empty', async () => {
     it('returns 400', async () => {
       const response = await request({
           method: 'post',
-          uri: getURL('checkEmail'),
+          uri: getURL('checkName'),
           json: true,
           body: null
       });
@@ -31,29 +31,29 @@ describe('POST /checkEmail', async () => {
     it('validates it', async () => {
       const response = await request({
           method: 'post',
-          uri: getURL('checkEmail'),
+          uri: getURL('checkName'),
           json: true,
           body: {
-            email: newUser.email
+            name: newUser.name
           }
       });
       assert.equal(response.body.success, true);
     });
   });
-  context('when email exists', async () => {
+  context('when name exists', async () => {
     it('returns error', async () => {
       await User.create(newUser);
       const response = await request({
           method: 'post',
-          uri: getURL('checkEmail'),
+          uri: getURL('checkName'),
           json: true,
           body: {
-            email: newUser.email
+            name: newUser.name
           }
       });
       await User.remove({});
       assert.equal(response.body.success, false);
-      assert.equal(response.body.error, 'Email занят');
+      assert.equal(response.body.error, 'Имя занято');
     });
   });
 });
