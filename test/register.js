@@ -8,8 +8,6 @@ const assert = require('assert');
 let server;
 
 const User = require('../models/user');
-const Split = require('../models/split');
-const Excercise = require('../models/excercise');
 
 function getURL(path) {
     return `http://localhost:3000/api/${path}`;

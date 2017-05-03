@@ -114,7 +114,7 @@ describe('POST /addExcercise', async () => {
       });
     });
     context('when excercise contins one field empty', async () => {
-      it.only('returns 402 and no excercise appears', async () => {
+      it('returns 402 and no excercise appears', async () => {
         const excerciseWithOneFieldEmpty = {
           title: 'good excercise'
         };

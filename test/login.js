@@ -8,8 +8,6 @@ const assert = require('assert');
 let server;
 
 const User = require('../models/user');
-const Split = require('../models/split');
-const Excercise = require('../models/excercise');
 
 function getURL(path) {
     return `http://localhost:3000/api/${path}`;
@@ -55,6 +53,12 @@ let existingUser;
     // });
 
 describe('POST /login', async () => {
+  beforeEach(async () => {
+    await User.remove({});
+  });
+  afterEach(async () => {
+    await User.remove({});
+  });
   context('when one field is empty', async () => {
     it('returns 400', async () => {
       const response = await request({
