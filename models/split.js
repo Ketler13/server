@@ -1,4 +1,4 @@
-const mongoose = require('mongoose');
+const mongoose = require('../libs/mongoose');
 
 
 const splitSchema = new mongoose.Schema({

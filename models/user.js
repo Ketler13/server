@@ -1,4 +1,4 @@
-const mongoose = require('mongoose');
+const mongoose = require('../libs/mongoose');
 const crypto = require('crypto');
 const config = require('config');
 
